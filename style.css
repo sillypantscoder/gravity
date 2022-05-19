@@ -1,0 +1,26 @@
+.planet {
+	--radius: 0;
+	--top: 0;
+	--left: 0;
+	width: calc(var(--radius) * 2);
+	height: calc(var(--radius) * 2);
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	top: calc(var(--top) - var(--radius));
+	left: calc(var(--left) - var(--radius));
+}
+body {
+	overflow: hidden;
+	--top: 0;
+	transform: translateY(calc(50vh - var(--top)));
+	background-color: gray;
+}
+.text {
+	--top: 0;
+	--left: 0;
+	display: inline-block;
+	position: absolute;
+	top: calc(var(--top) - var(--radius));
+	left: calc(var(--left) - var(--radius));
+}
