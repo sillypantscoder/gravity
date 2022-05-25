@@ -82,10 +82,26 @@ class Player extends Planet {
 		if (this.velocity.x < -500) this.velocity.x = 0
 		if (this.velocity.y >  500) this.velocity.y = 0
 		if (this.velocity.y < -500) this.velocity.y = 0
-		if (this.pos.x < 0) this.velocity.x = 1
-		if (this.pos.x > 1275) this.velocity.x = -1
-		if (this.pos.y < 0) this.velocity.y = 1
-		if (this.pos.y > max_height) this.velocity.y = -1
+		if (this.pos.x < 0) {
+			this.velocity.x = 1
+			buttons.left = false
+			buttons.right = true
+		}
+		if (this.pos.x > 1275) {
+			this.velocity.x = -1
+			buttons.left = true
+			buttons.right = false
+		}
+		if (this.pos.y < 0) {
+			this.velocity.y = 1
+			buttons.up = false
+			buttons.down = true
+		}
+		if (this.pos.y > max_height) {
+			this.velocity.y = -1
+			buttons.up = true
+			buttons.down = false
+		}
 		this.pos.x += this.velocity.x
 		this.pos.y += this.velocity.y
 		this.update()
@@ -143,10 +159,10 @@ function tick() {
 			planets[i].checkCollision(player)
 		}
 	}
-	if (buttons.up) player.velocity.y -= 0.1
-	if (buttons.down) player.velocity.y += 0.1
-	if (buttons.left) player.velocity.x -= 0.1
-	if (buttons.right) player.velocity.x += 0.1
+	if (buttons.up) player.velocity.y -= 0.15
+	if (buttons.down) player.velocity.y += 0.15
+	if (buttons.left) player.velocity.x -= 0.15
+	if (buttons.right) player.velocity.x += 0.15
 	player.tick()
 }
 window.addEventListener("mousemove", (e) => {
@@ -159,9 +175,9 @@ window.addEventListener("mousemove", (e) => {
 })
 var buttons = {
 	up: false,
-	down: false,
+	down: true,
 	left: false,
-	right: false
+	right: true
 }
 window.addEventListener("keydown", (e) => {
 	switch (e.key) {
